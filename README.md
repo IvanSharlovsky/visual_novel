@@ -1,2 +1,1 @@
 # visual_novel
-test
