@@ -6,7 +6,7 @@ define Mi = Character("Микола")      # TODO: add colors
 
 label start:
 
-    scene outide
+    scene bg outide
 
     $ Mi_rel = 5
     $ Uka_rel = 5
@@ -20,7 +20,7 @@ label start:
         while (not name):
             name = renpy.input("Как тебя зовут?")
 
-    scene classroom
+    scene bg classroom
 
     show Mikola_happy
 
