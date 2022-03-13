@@ -1,7 +1,9 @@
-define Te = Character("Романченко Єлизавета Євгеніївна")
-define Uka = Character("Юка")
-define Hi = Character("Хина")
-define Mi = Character("Микола")      # TODO: add colors
+define Te = Character("Романченко Єлизавета Євгеніївна", who_color = "#FFFFFF", what_color = "#FF00FF")
+define Uka = Character("Юка", who_color = "#FFFFFF", what_color = "#FF7F50")
+define Hi = Character("Хина", who_color = "#FFFFFF", what_color = "#98FB98")
+define Mi = Character("Микола", who_color = "#00FFFF", what_color = "#DDA0DD")
+define narrator = Character(what_italic=True, what_color = "#2F4F4F")
+ 
 
 
 label start:
@@ -31,7 +33,7 @@ label start:
             jump d1
         "Да":
             jump d2
-        "...":
+        "Qiuq exit":
             jump d3
 
 label d1:
@@ -103,7 +105,6 @@ label fucknumbers:
             jump d3
 
 label d3:
-    "сценарий 3.???" #TODO
     return
 
 label d1_15:
