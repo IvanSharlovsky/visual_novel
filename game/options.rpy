@@ -152,6 +152,8 @@ define config.save_directory = "School-1647086191"
 
 define config.window_icon = "gui/window_icon.png"
 
+define config.has_autosave = False
+
 
 ## Build configuration #########################################################
 ##
