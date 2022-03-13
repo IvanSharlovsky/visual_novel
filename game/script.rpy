@@ -3,12 +3,12 @@ define Uka = Character("Юка", who_color = "#FFFFFF", what_color = "#FF7F50")
 define Hi = Character("Хина", who_color = "#FFFFFF", what_color = "#98FB98")
 define Mi = Character("Микола", who_color = "#00FFFF", what_color = "#DDA0DD")
 define narrator = Character(what_italic=True, what_color = "#2F4F4F")
- 
+
 
 define slowestdissolve = Dissolve(2)
 
 transform rightest:
-    xalign 0.8
+    xalign 0.75
     yalign 1.0
 
 
