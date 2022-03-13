@@ -1,3 +1,7 @@
 saves
 log.txt
-
+script.rpyc
+options.rpyc
+screen.rpyc
+gui.rpyc
+.DS_Store
