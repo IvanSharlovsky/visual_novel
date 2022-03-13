@@ -2,25 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 56: expected 'label_name' not found.
-    jump d1.15
-        ^
-
-File "game/script.rpy", line 60: expected 'label_name' not found.
-    jump d1.15
-        ^
-
-File "game/script.rpy", line 65: expected 'label_name' not found.
-    jump d1.15
-        ^
-
-File "game/script.rpy", line 100: expected 'label_name' not found.
-    jump d1.15
-        ^
-
-File "game/script.rpy", line 108: expected 'label_name_declare' not found.
-    label d1.15:
-         ^
+File "game/script.rpy", line 141: expected end of line
+    stop sound "run.mp3"
+               ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sat Mar 12 15:39:13 2022
+Sun Mar 13 18:52:21 2022

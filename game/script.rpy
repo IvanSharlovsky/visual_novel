@@ -3,10 +3,16 @@ define Uka = Character("Юка")
 define Hi = Character("Хина")
 define Mi = Character("Микола")      # TODO: add colors
 
+define slowestdissolve = Dissolve(2)
+
+transform rightest:
+    xalign 0.8
+    yalign 1.0
+
 
 label start:
 
-    scene outide
+    scene bg outide
 
     $ Mi_rel = 5
     $ Uka_rel = 5
@@ -20,9 +26,9 @@ label start:
         while (not name):
             name = renpy.input("Как тебя зовут?")
 
-    scene classroom
+    scene bg classroom
 
-    show Mikola_happy
+    show mikola happy
 
     Mi "Здарова, [name]! Прекрасная сегодня погодка, не правда ли?"
 
@@ -38,9 +44,9 @@ label d1:
 
     Mi "Нуу..."
 
-    show Mikola_nod
+    show mikola nod
 
-    show Mikola_look_around
+    show mikola look arount
 
     Mi "Конечно нет, о чем ты... не ори так, ну че идешь?"
 
@@ -107,7 +113,47 @@ label d3:
     return
 
 label d1_15:
-    "сценарий 1.15" #продолжение
+    show yuka angry at right
+    Uka "Боже, опять эти двое страдают фигней. Вы хоть слышали,
+    что на этом уроке будет контрольная по математике?"
+    Mi "Что?! Впервые слышу!"
+    Uka "Тсц, а вот ходили бы вы на уроки, знали бы об этом заранее!
+    И даже не думайте о побеге, я все доложу мисс Такахаси."
+    show hina at rightest
+    Hi "Будет тебе Юка, не будь такой строгой с [name]..."
+    show hina red at rightest
+    Hi "всмысле c ними обоими, мы же одноклассники и
+    должны помогать друг другу!"
+    show hina ar rightest
+    Mi "Забей на эту дурочку, валим отсюда пока не поздно"
+
+    menu:
+        "Пойти":
+            jump go
+        "Остаться":
+            jump notgo
+
+label go:
+    scene bg hall
+    play sound "run.mp3"
+    scene bg hall
+    with slowestdissolve
+    stop sound
+    show teacher
+    Te "И куда вы бежите? Урок уже скоро начнется."
+    menu:
+        "Да так просто гуляем":
+            Te "Вот как..."
+            $ Sus += 3
+        "...":
+            $ Sus += 2
+    play sound "bell.mp3"
+    Te "Ну ладно, пройдемте в класс"
+    jump notgo
+
+label notgo:
     return
+
+
 
     return
