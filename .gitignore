@@ -5,3 +5,4 @@ options.rpyc
 screen.rpyc
 gui.rpyc
 .DS_Store
+cache
