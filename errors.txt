@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 141: expected end of line
-    stop sound "run.mp3"
-               ^
+File "game/script.rpy", line 32: end of line expected.
+    H ""Снова в школу... Ну чтож - живи и дрочи!""
+        ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sun Mar 13 18:52:21 2022
+Mon Mar 14 07:15:41 2022
