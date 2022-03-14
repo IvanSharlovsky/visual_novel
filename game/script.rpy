@@ -1,10 +1,15 @@
+###defines for characters################################################################################
 define Te = Character("Романченко Єлизавета Євгеніївна", who_color = "#FF00FF", what_color = "#D8BFD8")
 define Uka = Character("Юка", who_color = "#1E90FF", what_color = "#7B68EE")
 define Hi = Character("Хина", who_color = "#9ACD32", what_color = "#98FB98")
 define Mi = Character("Микола", who_color = "#F4A460", what_color = "#FFDEAD")
 define narrator = Character(what_color = "#FFE4E1")
 define H = Character("[name]", what_color = "#AFEEEE")
+<<<<<<< HEAD
 
+=======
+########################################################################################################
+>>>>>>> main
 
 define slowestdissolve = Dissolve(2)
 
@@ -12,20 +17,31 @@ transform rightest:
     xalign 1.1
     yalign 1.0
 
+<<<<<<< HEAD
 transform nearright:
     xalign 0.8
     yalign 1.0
+=======
+########################################################################################################
+>>>>>>> main
 
 label start:
-
-    scene bg outside day
 
     $ Mi_rel = 5
     $ Uka_rel = 5
     $ Sus = 0
+<<<<<<< HEAD
 
     "{i}{size=+5}Весенний солнечный день, на улице дует нежный ветерок, падают лепестки
     сала и все вокруг говорит о том, что этот день будет прекрасным.{/size}{/i}"
+=======
+    
+    scene bg school outside day 
+    #TODO smooth animation
+    
+    "{i}Весенний солнечный день, на улице дует нежный ветерок, падают лепестки
+    сала и все вокруг говорит о том, что этот день будет прекрасным.{/i}"
+>>>>>>> main
 
     python:
         name = renpy.input("{i}{color=#FFE4E1}Как тебя зовут?{/color}{/i}")
@@ -33,95 +49,140 @@ label start:
             name = renpy.input("Как тебя зовут?")
 
     H "\"Вот бы запалить сегодня чьи-нибудь трусы...\""
+<<<<<<< HEAD
 
     scene bg classroom day
+=======
+    
+#-------------------------------------------------------------------------------------------------------    
+    
+    scene bg school classroom day
+>>>>>>> main
 
     show mikola happy
 
     Mi "Здарова, [name]! Прекрасная сегодня погодка, не правда ли?"
 
     menu:
-        "Опять свалить хочешь?":
-            jump d1
-        "Да":
-            jump d2
+        "Неужели снова свалить хочешь?":
+            jump want_go_away
+            
+        "Ага, нечасто такая бывает.":
+            jump good_weather
+            
         "Qiuq exit":
-            jump d3
+            jump exit
 
-label d1:
+########################################################################################################
+
+label want_go_away:
 
     Mi "Нуу..."
 
-    #show mikola nod - not working
+    #show mikola nod - not working 
+    #TODO animation without text
 
     show mikola look around
 
     Mi "Конечно нет, о чем ты... не ори так, ну че, идешь?"
 
-    jump d111
+    jump answer_go_away
 
-label d111:
+########################################################################################################
 
-    menu:
-        "Не слишком мы в последнее время пропускаем, как твои родители случайно
-        не миллионеры, может завяжем уже?":
-            $ Mi_rel -= 3
-            show Mikola_angry
-            jump d1_15
-
-        "Не, я не собираюсь на 1 урок в месяц ходить":
-            $ Mi_rel -= 2
-            jump d1_15
-
-        "*Молча кивнуть*":
-            $ Mi_rel += 1
-            Mi "Тогда валим скорее, меня тошнит от местного зоопарка"
-            jump d1_15
-
-label d2:
+label good_weather:
 
     Mi "Ха-ха, жалко такие деньки проводить в тесной бетонной коробке,
     понимаешь намек?"
 
     menu:
-        "Да":
+        "Еще бы! У тебя только одно на уме":
             jump d222
 
-        "Нет":
+        "Кажется, не очень":
             Mi "Ну я имею ввиду, очень уж сейчас хочется развеяться…
             ПОНИМАЕШЬ?"
+            
             $ Mi_rel -= 1
+            
             menu:
-                "Да":
-                    jump d222
-                "Нет":
+                "Да понял, понял":
+                    jump question_go_away
+                    
+                "Окно открыть предлагаешь?":
                     Mi "..."
-                    "..."
+                    
+                    H "..."
+                    
                     Mi "... Ты конченый?"
+                    
                     $ Mi_rel -= 2
-                    jump fucknumbers
+                    
+                    jump joke
 
-label d222:
+########################################################################################################
+
+label question_go_away:
+
     Mi "Ну, что думаешь? Пойдем?"
-    jump d111
+    
+    jump answer_go_away
 
-label fucknumbers:
+########################################################################################################
+
+label answer_go_away:
+
+    menu:
+        "Не, слишком мы в последнее время пропускаем, может завяжем уже?":
+            $ Mi_rel -= 3
+            
+            show mikola angry
+            
+            jump girls_appearance
+
+        "Не, я не собираюсь на 1 урок в месяц ходить":
+            $ Mi_rel -= 2
+            
+            jump girls_appearance
+
+        "*Молча кивнуть*":
+            $ Mi_rel += 1
+            
+            Mi "Тогда валим скорее, меня тошнит от местного зоопарка"
+            
+            jump girls_appearance
+
+########################################################################################################
+
+label joke:
+
     menu:
         "Да шучу я успокойся":
             jump d222
+            
         "Нет":
             $ Mi_rel -= 1
-            jump d1_15
+            
+            jump girls_appearance
+            
         "Да пошел ты!":
             $ Mi_rel = 0
-            jump d3
+            
+            jump exit
 
-label d3:
-    return
 
+<<<<<<< HEAD
 label d1_15:
     show yuka angry small at nearright
 
+=======
+########################################################################################################
+
+label girls_appearance:
+
+    show yuka angry at right
+    
+>>>>>>> main
     Uka "Боже, опять эти двое страдают фигней. Вы хоть слышали,
     что на этом уроке будет контрольная по математике?"
 
@@ -131,6 +192,7 @@ label d1_15:
 
     Uka "Тсц, а вот ходили бы вы на уроки, знали бы об этом заранее!
     И даже не думайте о побеге, я все доложу мисс Такахаси."
+<<<<<<< HEAD
 
     show hina frown small at rightest
 
@@ -143,6 +205,20 @@ label d1_15:
 
     show hina frown small at rightest
 
+=======
+    
+    show hina frown at rightest
+    
+    Hi "Будет тебе Юка, [name] не заслуживает такой строгости..."
+    
+    show hina frown blush at rightest
+    
+    Hi "всмысле c ними обоими, мы же одноклассники и
+    должны помогать друг другу!"
+    
+    show hina frown at rightest
+    
+>>>>>>> main
     Mi "Забей на эту дурочку, валим отсюда пока не поздно"
 
     menu:
@@ -151,27 +227,49 @@ label d1_15:
         "Остаться":
             jump notgo
 
+########################################################################################################
+
 label go:
-    scene bg hall
+
+    scene bg school corridor day
+    
     play sound "run.mp3"
-    scene bg hall
+    
+    scene bg school corridor day
     with slowestdissolve
     stop sound
+    
     show teacher
+    
     Te "И куда вы бежите? Урок уже скоро начнется."
+    
     menu:
         "Да так просто гуляем":
             Te "Вот как..."
+            
             $ Sus += 3
+            
         "...":
             $ Sus += 2
+            
     play sound "bell.mp3"
-    Te "Ну ладно, пройдемте в класс"
+    
+    Te "Урок начинается, идите в класс"
+    
     jump notgo
 
+########################################################################################################
+
 label notgo:
+
     return
 
+########################################################################################################
 
+label exit:
+
+    return
+    
+########################################################################################################
 
     return

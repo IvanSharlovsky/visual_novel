@@ -1,8 +1,10 @@
 saves
+cache
 log.txt
+errors.txt
+traceback.txt
 script.rpyc
 options.rpyc
 screen.rpyc
 gui.rpyc
 .DS_Store
-cache
