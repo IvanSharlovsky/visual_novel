@@ -4,14 +4,17 @@ define Hi = Character("Хина", who_color = "#9ACD32", what_color = "#98FB98")
 define Mi = Character("Микола", who_color = "#F4A460", what_color = "#FFDEAD")
 define narrator = Character(what_color = "#FFE4E1")
 define H = Character("[name]", what_color = "#AFEEEE")
- 
+
 
 define slowestdissolve = Dissolve(2)
 
 transform rightest:
-    xalign 0.75
+    xalign 1.1
     yalign 1.0
 
+transform nearright:
+    xalign 0.8
+    yalign 1.0
 
 label start:
 
@@ -20,7 +23,7 @@ label start:
     $ Mi_rel = 5
     $ Uka_rel = 5
     $ Sus = 0
- 
+
     "{i}{size=+5}Весенний солнечный день, на улице дует нежный ветерок, падают лепестки
     сала и все вокруг говорит о том, что этот день будет прекрасным.{/size}{/i}"
 
@@ -30,7 +33,7 @@ label start:
             name = renpy.input("Как тебя зовут?")
 
     H "\"Вот бы запалить сегодня чьи-нибудь трусы...\""
-    
+
     scene bg classroom day
 
     show mikola happy
@@ -117,29 +120,29 @@ label d3:
     return
 
 label d1_15:
-    show yuka angry small at right
-    
+    show yuka angry small at nearright
+
     Uka "Боже, опять эти двое страдают фигней. Вы хоть слышали,
     что на этом уроке будет контрольная по математике?"
-    
+
     show mikola surprised
-    
+
     Mi "Что?! Впервые слышу!"
-    
+
     Uka "Тсц, а вот ходили бы вы на уроки, знали бы об этом заранее!
     И даже не думайте о побеге, я все доложу мисс Такахаси."
-    
+
     show hina frown small at rightest
-    
+
     Hi "Будет тебе Юка, [name] не заслуживает такой строгости..."
-    
+
     show hina blush small at rightest
-    
+
     Hi "всмысле c ними обоими, мы же одноклассники и
     должны помогать друг другу!"
-    
+
     show hina frown small at rightest
-    
+
     Mi "Забей на эту дурочку, валим отсюда пока не поздно"
 
     menu:
