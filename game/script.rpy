@@ -2,7 +2,7 @@ define Te = Character("Романченко Єлизавета Євгеніїв�
 define Uka = Character("Юка", who_color = "#FFFFFF", what_color = "#FF7F50")
 define Hi = Character("Хина", who_color = "#FFFFFF", what_color = "#98FB98")
 define Mi = Character("Микола", who_color = "#00FFFF", what_color = "#DDA0DD")
-define narrator = Character(what_italic=True, what_color = "#2F4F4F")
+define narrator = Character(what_italic=True, what_color = "#FFE4E1")
 
 
 define slowestdissolve = Dissolve(2)
@@ -14,7 +14,7 @@ transform rightest:
 
 label start:
 
-    scene bg outide
+    scene bg outside day
 
     $ Mi_rel = 5
     $ Uka_rel = 5
@@ -28,7 +28,7 @@ label start:
         while (not name):
             name = renpy.input("Как тебя зовут?")
 
-    scene bg classroom
+    scene bg classroom day
 
     show mikola happy
 
