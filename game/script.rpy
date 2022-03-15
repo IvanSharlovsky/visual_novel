@@ -176,7 +176,7 @@ label girls_appearance:
     
     show hina frown blush at rightest
     
-    Hi "всмысле c ними обоими, мы же одноклассники и
+    Hi "всмысле они оба, мы же одноклассники и
     должны помогать друг другу!"
     
     show hina frown at rightest
@@ -224,7 +224,7 @@ label go:
 
 label notgo:
 
-    return
+   return 
 
 ########################################################################################################
 
