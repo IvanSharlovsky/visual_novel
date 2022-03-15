@@ -10,7 +10,11 @@ define H = Character("[name]", what_color = "#AFEEEE")
 define slowestdissolve = Dissolve(2)
 
 transform rightest:
-    xalign 0.75
+    xalign 1.1
+    yalign 1.0
+    
+transform nearright:
+    xalign 0.8
     yalign 1.0
 
 ########################################################################################################
@@ -154,7 +158,7 @@ label joke:
 
 label girls_appearance:
 
-    show yuka angry at right
+    show yuka angry at nearright
     
     Uka "Боже, опять эти двое страдают фигней. Вы хоть слышали,
     что на этом уроке будет контрольная по математике?"
