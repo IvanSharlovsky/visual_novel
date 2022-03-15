@@ -12,7 +12,7 @@ define slowestdissolve = Dissolve(2)
 transform rightest:
     xalign 1.1
     yalign 1.0
-    
+
 transform nearright:
     xalign 0.8
     yalign 1.0
@@ -24,10 +24,10 @@ label start:
     $ Mi_rel = 5
     $ Uka_rel = 5
     $ Sus = 0
-    
-    scene bg school outside day 
+
+    scene bg school outside day
     #TODO smooth animation
-    
+
     "{i}Весенний солнечный день, на улице дует нежный ветерок, падают лепестки
     сала и все вокруг говорит о том, что этот день будет прекрасным.{/i}"
 
@@ -37,9 +37,9 @@ label start:
             name = renpy.input("Как тебя зовут?")
 
     H "\"Вот бы запалить сегодня чьи-нибудь трусы...\""
-    
-#-------------------------------------------------------------------------------------------------------    
-    
+
+#-------------------------------------------------------------------------------------------------------
+
     scene bg school classroom day
 
     show mikola happy
@@ -49,10 +49,10 @@ label start:
     menu:
         "Неужели снова свалить хочешь?":
             jump want_go_away
-            
+
         "Ага, нечасто такая бывает.":
             jump good_weather
-            
+
         "Qiuq exit":
             jump exit
 
@@ -62,7 +62,7 @@ label want_go_away:
 
     Mi "Нуу..."
 
-    #show mikola nod - not working 
+    #show mikola nod - not working
     #TODO animation without text
 
     show mikola look around
@@ -85,22 +85,22 @@ label good_weather:
         "Кажется, не очень":
             Mi "Ну я имею ввиду, очень уж сейчас хочется развеяться…
             ПОНИМАЕШЬ?"
-            
+
             $ Mi_rel -= 1
-            
+
             menu:
                 "Да понял, понял":
                     jump question_go_away
-                    
+
                 "Окно открыть предлагаешь?":
                     Mi "..."
-                    
+
                     H "..."
-                    
+
                     Mi "... Ты конченый?"
-                    
+
                     $ Mi_rel -= 2
-                    
+
                     jump joke
 
 ########################################################################################################
@@ -108,7 +108,7 @@ label good_weather:
 label question_go_away:
 
     Mi "Ну, что думаешь? Пойдем?"
-    
+
     jump answer_go_away
 
 ########################################################################################################
@@ -118,21 +118,21 @@ label answer_go_away:
     menu:
         "Не, слишком мы в последнее время пропускаем, может завяжем уже?":
             $ Mi_rel -= 3
-            
+
             show mikola angry
-            
+
             jump girls_appearance
 
         "Не, я не собираюсь на 1 урок в месяц ходить":
             $ Mi_rel -= 2
-            
+
             jump girls_appearance
 
         "*Молча кивнуть*":
             $ Mi_rel += 1
-            
+
             Mi "Тогда валим скорее, меня тошнит от местного зоопарка"
-            
+
             jump girls_appearance
 
 ########################################################################################################
@@ -142,15 +142,15 @@ label joke:
     menu:
         "Да шучу я успокойся":
             jump d222
-            
+
         "Нет":
             $ Mi_rel -= 1
-            
+
             jump girls_appearance
-            
+
         "Да пошел ты!":
             $ Mi_rel = 0
-            
+
             jump exit
 
 
@@ -159,28 +159,28 @@ label joke:
 label girls_appearance:
 
     show yuka angry at nearright
-    
+
     Uka "Боже, опять эти двое страдают фигней. Вы хоть слышали,
     что на этом уроке будет контрольная по математике?"
-    
+
     show mikola surprised
-    
+
     Mi "Что?! Впервые слышу!"
-    
+
     Uka "Тсц, а вот ходили бы вы на уроки, знали бы об этом заранее!
     И даже не думайте о побеге, я все доложу мисс Такахаси."
-    
+
     show hina frown at rightest
-    
+
     Hi "Будет тебе Юка, [name] не заслуживает такой строгости..."
-    
+
     show hina frown blush at rightest
-    
+
     Hi "всмысле они оба, мы же одноклассники и
     должны помогать друг другу!"
-    
+
     show hina frown at rightest
-    
+
     Mi "Забей на эту дурочку, валим отсюда пока не поздно"
 
     menu:
@@ -194,44 +194,59 @@ label girls_appearance:
 label go:
 
     scene bg school corridor day
-    
+
     play sound "run.mp3"
-    
+
     scene bg school corridor day
     with slowestdissolve
     stop sound
-    
+
     show teacher
-    
+
     Te "И куда вы бежите? Урок уже скоро начнется."
-    
+
     menu:
         "Да так просто гуляем":
             Te "Вот как..."
-            
+
             $ Sus += 3
-            
+
         "...":
+
             $ Sus += 2
-            
+
     play sound "bell.mp3"
-    
+
     Te "Урок начинается, идите в класс"
-    
-    jump notgo
+
+    jump notgo_after_bell
 
 ########################################################################################################
 
 label notgo:
 
-   return 
+    play sound "bell.mp3"
+
+    jump notgo_after_bell
+
+label notgo_after_bell:
+
+    show bg school classroom desks
+    #TODO: add image
+    show mikola back
+    show hina back
+    show yuka back
+    #TODO: add images and positioning
+    "a"
+
+
 
 ########################################################################################################
 
 label exit:
 
     return
-    
+
 ########################################################################################################
 
     return
