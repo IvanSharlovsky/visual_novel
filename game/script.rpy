@@ -208,7 +208,7 @@ label girls_appearance:
 
     show hina frown blush at rightest
 
-    Hi "Всмысле c ними обоими, мы же одноклассники и
+    Hi "Всмысле они оба, мы же одноклассники и
     должны помогать друг другу!"
 
     show hina frown at rightest
@@ -267,6 +267,8 @@ label notgo_after_bell:
     show hina back
     show yuka back
     #TODO: add images and positioning
+
+    
 
 ########################################################################################################
 
