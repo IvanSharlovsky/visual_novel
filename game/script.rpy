@@ -12,7 +12,11 @@ define SB = Character("Незнакомый ученик", who_color = "#FFFFFF"
 define slowestdissolve = Dissolve(2)
 
 transform rightest:
-    xalign 0.75
+    xalign 1.1
+    yalign 1.0
+
+transform nearright:
+    xalign 0.8
     yalign 1.0
 
 transform nearright:
@@ -249,6 +253,7 @@ label go:
             $ Sus += 3
 
         "...":
+
             $ Sus += 2
 
     play sound "bell.mp3"
