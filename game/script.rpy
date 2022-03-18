@@ -15,6 +15,10 @@ transform rightest:
     xalign 0.75
     yalign 1.0
 
+transform nearright:
+    xalign 0.8
+    yalign 1.0
+
 ########################################################################################################
 
 label start:
@@ -186,7 +190,7 @@ label joke:
 
 label girls_appearance:
 
-    show yuka angry at right
+    show yuka angry at nearright
 
     Uka "Боже, опять эти двое страдают фигней. Вы хоть слышали,
     что на этом уроке будет контрольная по математике?"
@@ -246,13 +250,23 @@ label go:
 
     Te "Урок начинается, идите в класс"
 
-    jump notgo
+    jump notgo_after_bell
 
 ########################################################################################################
 
 label notgo:
 
-    return
+    play sound "bell.mp3"
+
+    jump notgo_after_bell
+
+label notgo_after_bell:
+
+    show bg school classroom desks
+    show mikola back
+    show hina back
+    show yuka back
+    #TODO: add images and positioning
 
 ########################################################################################################
 
