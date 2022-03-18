@@ -267,7 +267,7 @@ label notgo_after_bell:
     show hina back
     show yuka back
     #TODO: add images and positioning
-    
+
 ########################################################################################################
 
 label exit:
