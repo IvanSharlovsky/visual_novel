@@ -209,3 +209,8 @@ init python:
 ## by a slash.
 
 # define build.itch_project = "renpytom/test-project"
+
+#Settings for volume
+
+define config.default_music_volume = 0.5 #где 0.5 = 50% громкости
+define config.default_sfx_volume = 0.5

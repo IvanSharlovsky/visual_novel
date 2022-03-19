@@ -1,4 +1,4 @@
-###defines for characters################################################################################
+# Declare characters used by this game.
 define Te = Character("Романченко Єлизавета Євгеніївна", who_color = "#FF00FF", what_color = "#D8BFD8")
 define Uka = Character("Юка", who_color = "#1E90FF", what_color = "#7B68EE")
 define Hi = Character("Хина", who_color = "#9ACD32", what_color = "#98FB98")
@@ -7,8 +7,8 @@ define narrator = Character(what_color = "#FFE4E1")
 define H = Character("[name]", what_color = "#AFEEEE")
 define Inc = Character("???", who_color = "#FFFFFF", what_color = "#AFEEEE")
 define SB = Character("Незнакомый ученик", who_color = "#FFFFFF", what_color = "#FFFFFF")
-########################################################################################################
 
+# Some defines
 define slowestdissolve = Dissolve(2)
 
 transform rightest:
@@ -19,53 +19,64 @@ transform nearright:
     xalign 0.8
     yalign 1.0
 
-transform nearright:
-    xalign 0.8
-    yalign 1.0
-
-########################################################################################################
-
+# The game starts here.
 label start:
 
     $ Mi_rel = 5
     $ Uka_rel = 5
     $ Sus = 0
 
-    scene bg school outside cloud
-    #TODO smooth animation
+    python:
 
-    "{i}Сегодня ты снова пришел в школу. Снова. Ты занимаешься этим каждое утро.
-    Как и сотни других людей.{/i}"
+        import random
+        mood = random.randint(0,1)
 
-    "{i}Вы повторяете это ритуал ежедневно, лишь чтобы добавить несколько оттеноков
-    в этот один бесконечный серый поток рутины.{/i}"
+    if mood:
 
-    Inc "\"Изо дня в день... Происходит одно и тоже...\""
+        scene bg school outside cloud
+        with fade
 
-    Inc "\"Сплошная скука... Изо дня в день...\""
+        "{i}Сегодня ты снова пришел в школу. Снова. Ты занимаешься этим каждое утро.
+        Как и сотни других людей.{/i}"
 
-    Inc "\"Этот мир...\""
+        "{i}Вы повторяете это ритуал ежедневно, лишь чтобы добавить несколько оттеноков
+        в этот один бесконечный серый поток рутины.{/i}"
 
-    Inc "\"Гниет на глазах...\""
+        Inc "\"Изо дня в день... Происходит одно и тоже...\""
 
-    "{i}Однако, погода решила удивить.{/i}"
+        Inc "\"Сплошная скука... Изо дня в день...\""
 
-    scene bg school outside day
-    #TODO smooth animation
+        Inc "\"Этот мир...\""
 
-    #"{i}Весенний солнечный день, на улице дует нежный ветерок, падают лепестки
-    #сала и все вокруг говорит о том, что этот день будет прекрасным.{/i}"
+        Inc "\"Гниет на глазах...\""
 
-    "{i}Выглянуло весеннее солнцо, на улице задул нежный ветерок, полетели лепестки
-    сала и появилась небольшая надежда на то, что этот день чем-то удивит и дальше.{/i}"
+        "{i}Однако, погода решила удивить.{/i}"
+
+        scene bg school outside day
+
+        "{i}Выглянуло весеннее солнцо, на улице задул нежный ветерок, полетели лепестки
+        сала и появилась небольшая надежда на то, что этот день чем-то удивит и дальше.{/i}"
+
+    else:
+
+        # Start by playing some music.
+        play music "illurock.opus"
+
+        scene bg school outside day
+        with fade
+
+        "{i}Весенний солнечный день, на улице дует нежный ветерок, падают лепестки
+        сала и все вокруг говорит о том, что этот день будет прекрасным.{/i}"
 
     scene bg school hall day
+    with fade
 
     "{i}Кто-то окрикнул тебя.{/i}"
 
     SB "Привет, ... "
 
     python:
+
         name = renpy.input("{i}{color=#FFE4E1}Как тебя зовут?{/color}{/i}")
         while (not name):
             name = renpy.input("Как тебя зовут?")
@@ -75,6 +86,7 @@ label start:
     H "\"Вот дурак, у меня же нет друзей среди девочек.\""
 
     scene bg school classroom day
+    with fade
 
     "{i}Первый урок закончился и пока все шло как обычно.{/i}"
 
@@ -82,7 +94,11 @@ label start:
 
     Mi "Здарова, [name]! Прекрасная сегодня погодка, не правда ли?"
 
+    "Микола - двоечник-одноклассник. О нем ходит много разных неприятных слухов.
+    Но ты с ним в хороших отношениях."
+
     menu:
+
         "Неужели снова свалить хочешь?":
             jump want_go_away
 
@@ -115,6 +131,7 @@ label good_weather:
     понимаешь намек?"
 
     menu:
+
         "Еще бы! У тебя только одно на уме":
             jump girls_appearance
 
@@ -125,6 +142,7 @@ label good_weather:
             $ Mi_rel -= 1
 
             menu:
+
                 "Да понял, понял":
                     jump question_go_away
 
@@ -152,6 +170,7 @@ label question_go_away:
 label answer_go_away:
 
     menu:
+
         "Не, слишком мы в последнее время пропускаем, может завяжем уже?":
             $ Mi_rel -= 3
 
@@ -176,6 +195,7 @@ label answer_go_away:
 label joke:
 
     menu:
+
         "Да шучу я успокойся":
             jump d222
 
@@ -189,7 +209,6 @@ label joke:
 
             jump exit
 
-
 ########################################################################################################
 
 label girls_appearance:
@@ -198,6 +217,8 @@ label girls_appearance:
 
     Uka "Боже, опять эти двое страдают фигней. Вы хоть слышали,
     что на этом уроке будет контрольная по математике?"
+
+    "Юка - староста. Ответственная, всегда следит за порядком, не любит лентяев."
 
     show mikola surprised
 
@@ -210,23 +231,23 @@ label girls_appearance:
 
     Hi "Будет тебе Юка, [name] не заслуживает такой строгости..."
 
+    "Хина - застенчивая девочка-отличница в очках. Часто пялится на тебя без
+    какой-либо причины."
+
     show hina frown blush at rightest
 
     Hi "Всмысле они оба, мы же одноклассники и
     должны помогать друг другу!"
-    #!!!!!!!!
-    #С прописной буквы пишется первое слово текста, а также первое слово после
-    #точки, многоточия, вопросительного и восклицательного знаков, заканчивающих предложение.
-    #!!!!!!!!
-
 
     show hina frown at rightest
 
     Mi "Забей на эту дурочку, валим отсюда пока не поздно"
 
     menu:
+
         "Пойти":
             jump go
+
         "Остаться":
             jump notgo
 
@@ -234,12 +255,11 @@ label girls_appearance:
 
 label go:
 
-    scene bg school corridor day
-
     play sound "run.mp3"
 
     scene bg school corridor day
     with slowestdissolve
+
     stop sound
 
     show teacher
@@ -247,6 +267,7 @@ label go:
     Te "И куда вы бежите? Урок уже скоро начнется."
 
     menu:
+
         "Да так просто гуляем":
             Te "Вот как..."
 
@@ -270,20 +291,23 @@ label notgo:
 
     jump notgo_after_bell
 
+########################################################################################################
+
 label notgo_after_bell:
 
     show bg school classroom desks
-    show mikola back
-    show hina back
-    show yuka back
+    #???
+    #show mikola back
+    #show hina back
+    #show yuka back
     #TODO: add images and positioning
 
-########################################################################################################
-
-label exit:
+    "..."
 
     return
 
 ########################################################################################################
+
+label exit:
 
     return
