@@ -1,12 +1,12 @@
 # Declare characters used by this game.
-define Te = Character("Романченко Єлизавета Євгеніївна", who_color = "#FF00FF", what_color = "#D8BFD8")
-define Uka = Character("Юка", who_color = "#1E90FF", what_color = "#7B68EE")
-define Hi = Character("Хина", who_color = "#9ACD32", what_color = "#98FB98")
-define Mi = Character("Микола", who_color = "#F4A460", what_color = "#FFDEAD")
-define narrator = Character(what_color = "#FFE4E1")
+define Te = Character("Такахаси Елизавета Евгеньевна", who_color = "#fa2bfafe", what_color = "#f079f0")
+define Uka = Character("Юка", who_color = "#2791fb", what_color = "#65b0f5")
+define Hi = Character("Хина", who_color = "#bbf449", what_color = "#8bdb8b")
+define K = Character("Коля", who_color = "#F4A460", what_color = "#FFDEAD")
+define narrator = Character(what_color = "#f4eeed")
 define H = Character("[name]", what_color = "#AFEEEE")
-define Inc = Character("???", who_color = "#FFFFFF", what_color = "#AFEEEE")
-define SB = Character("Незнакомый ученик", who_color = "#FFFFFF", what_color = "#FFFFFF")
+define Inc = Character("???", who_color = "#4b3030", what_color = "#725858")
+define SB = Character("Незнакомая ученица", who_color = "#FFFFFF", what_color = "#FFFFFF")
 
 # Some defines
 define slowestdissolve = Dissolve(2)
@@ -22,7 +22,7 @@ transform nearright:
 # The game starts here.
 label start:
 
-    $ Mi_rel = 5
+    $ K_rel = 5
     $ Uka_rel = 5
     $ Sus = 0
 
@@ -54,8 +54,10 @@ label start:
 
         scene bg school outside day
 
+        play music "illurock.opus"
+
         "{i}Выглянуло весеннее солнцо, на улице задул нежный ветерок, полетели лепестки
-        сала и появилась небольшая надежда на то, что этот день чем-то удивит и дальше.{/i}"
+        сакуры и появилась небольшая надежда на то, что этот день чем-то удивит и дальше.{/i}"
 
     else:
 
@@ -66,12 +68,12 @@ label start:
         with fade
 
         "{i}Весенний солнечный день, на улице дует нежный ветерок, падают лепестки
-        сала и все вокруг говорит о том, что этот день будет прекрасным.{/i}"
+        сакуры и все вокруг говорит о том, что этот день будет прекрасным.{/i}"
 
     scene bg school hall day
     with fade
 
-    "{i}Кто-то окрикнул тебя.{/i}"
+    "{i}Чей-то женский голос окрикнул тебя.{/i}"
 
     SB "Привет, ... "
 
@@ -81,20 +83,21 @@ label start:
         while (not name):
             name = renpy.input("Как тебя зовут?")
 
-    SB "Привет, [name], как дела? Ты сделал то за... "
+    SB "Привет, Миха, как дела? Ты сделал то задание... "
 
-    H "\"Вот дурак, у меня же нет друзей среди девочек.\""
+    H "\"Вот Я дурак, у меня же нет друзей среди девочек.\""
 
     scene bg school classroom day
     with fade
 
     "{i}Первый урок закончился и пока все шло как обычно.{/i}"
 
+    #TODO поменять имя картинки
     show mikola happy
 
-    Mi "Здарова, [name]! Прекрасная сегодня погодка, не правда ли?"
+    K "Здарова, [name]! Прекрасная сегодня погодка, не правда ли?"
 
-    "Микола - двоечник-одноклассник. О нем ходит много разных неприятных слухов.
+    "Коля - двоечник-одноклассник. О нем ходит много разных слухов.
     Но ты с ним в хороших отношениях."
 
     menu:
@@ -112,14 +115,14 @@ label start:
 
 label want_go_away:
 
-    Mi "Нуу..."
+    K "Нуу..."
 
     #show mikola nod - not working
     #TODO animation without text
 
     show mikola look around
 
-    Mi "Конечно нет, о чем ты... не ори так, ну че, идешь?"
+    K "Конечно нет, о чем ты... не ори так, ну че, идешь?"
 
     jump answer_go_away
 
@@ -127,7 +130,7 @@ label want_go_away:
 
 label good_weather:
 
-    Mi "Ха-ха, жалко такие деньки проводить в тесной бетонной коробке,
+    K "Ха-ха, жалко такие деньки проводить в тесной бетонной коробке,
     понимаешь намек?"
 
     menu:
@@ -161,7 +164,7 @@ label good_weather:
 
 label question_go_away:
 
-    Mi "Ну, что думаешь? Пойдем?"
+    K "Ну, что думаешь? Пойдем?"
 
     jump answer_go_away
 
@@ -218,11 +221,11 @@ label girls_appearance:
     Uka "Боже, опять эти двое страдают фигней. Вы хоть слышали,
     что на этом уроке будет контрольная по математике?"
 
-    "Юка - староста. Ответственная, всегда следит за порядком, не любит лентяев."
+    "Юка - строгая староста. Ответственная, всегда следит за порядком."
 
     show mikola surprised
 
-    Mi "Что?! Впервые слышу!"
+    K "Что?! Впервые слышу!"
 
     Uka "Тсц, а вот ходили бы вы на уроки, знали бы об этом заранее!
     И даже не думайте о побеге, я все доложу мисс Такахаси."
@@ -231,7 +234,7 @@ label girls_appearance:
 
     Hi "Будет тебе Юка, [name] не заслуживает такой строгости..."
 
-    "Хина - застенчивая девочка-отличница в очках. Часто пялится на тебя без
+    "Хина - застенчивая девочка. Часто пялится на тебя без
     какой-либо причины."
 
     show hina frown blush at rightest
@@ -241,7 +244,7 @@ label girls_appearance:
 
     show hina frown at rightest
 
-    Mi "Забей на эту дурочку, валим отсюда пока не поздно"
+    K "Забей на эту дурочку, валим отсюда пока не поздно"
 
     menu:
 
@@ -268,7 +271,7 @@ label go:
 
     menu:
 
-        "Да так просто гуляем":
+        "Да так, просто гуляем":
             Te "Вот как..."
 
             $ Sus += 3
