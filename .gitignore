@@ -5,7 +5,7 @@ errors.txt
 traceback.txt
 script.rpyc
 options.rpyc
-screen.rpyc
+screens.rpyc
 gui.rpyc
 .DS_Store
 .vscode
